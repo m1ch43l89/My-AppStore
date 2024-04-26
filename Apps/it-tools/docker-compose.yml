@@ -1,0 +1,32 @@
+name: it-tools
+services:
+  it-tools:
+    image: 'corentinth/it-tools:latest'
+    container_name: it-tools
+    networks:
+      - dockernet
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.it-tools.entryPoints=https
+      - traefik.http.routers.it-tools.rule=Host(`tools.cloud-fd.de`)
+      - traefik.http.services.it-tools.loadbalancer.server.port=80
+      - traefik.http.routers.it-tools.middlewares=auth@file
+      - homepage.group=Apps & Services
+      - homepage.name=IT-Tools
+      - homepage.icon=it-tools.png
+      - homepage.href=https://tools.cloud-fd.de
+      - homepage.description=Collection of Online-Tools for Developers
+networks:
+  dockernet:
+    external: true
+x-casaos:
+  author: self
+  category: self
+  hostname: tools.cloud-fd.de
+  icon: https://github.com/louislam/dockge/blob/master/frontend/public/icon-192x192.png
+  index: /
+  port_map: ""
+  scheme: https
+  title:
+    custom: IT-Tools
