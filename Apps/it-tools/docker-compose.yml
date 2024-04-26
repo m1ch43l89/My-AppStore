@@ -21,10 +21,13 @@ networks:
   dockernet:
     external: true
 x-casaos:
-  author: self
+  architectures:
+    - amd64
+    - arm64
+  author: Michael
   category: self
   hostname: tools.cloud-fd.de
-  icon: https://github.com/louislam/dockge/blob/master/frontend/public/icon-192x192.png
+  icon: https://it-tools.tech/android-chrome-512x512.png
   index: /
   port_map: ""
   scheme: https
